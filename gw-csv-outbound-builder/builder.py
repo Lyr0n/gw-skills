@@ -4,7 +4,7 @@
 Construit un fichier de prospection prêt à importer (lemlist, Clay, tableur) en trois temps :
   1. la liste des boîtes : le fichier Atout France des hébergements classés, filtré
      (ou n'importe quel CSV qui a un nom, un code postal et un site) ;
-  2. le site de chaque boîte : skill website-scraper (domaine, email, téléphone, LinkedIn, SIREN) ;
+  2. le site de chaque boîte : skill gw-website-scraper (domaine, email, téléphone, LinkedIn, SIREN) ;
   3. le décideur : API Recherche d'entreprises (data.gouv), gratuite. Si la boîte est tenue par
      une holding, on remonte au dirigeant de la holding.
 
@@ -32,11 +32,11 @@ from concurrent.futures import ThreadPoolExecutor
 
 ATOUT_URL = "https://data.classement.atout-france.fr/static/exportHebergementsClasses/hebergements_classes.csv"
 API = "https://recherche-entreprises.api.gouv.fr/search"
-UA = "csv-outbound-builder/1.0"
+UA = "gw-csv-outbound-builder/1.0"
 MOTS_VIDES = ("hotel", "hôtel", "le", "la", "les", "de", "du", "des", "restaurant", "et", "&", "spa", "bar")
 ROLES = ("gérant", "président", "directeur général", "président de sas", "co-gérant")
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "website-scraper"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gw-website-scraper"))
 try:
     from scraper import scraper  # noqa: E402
 except ImportError:
@@ -209,7 +209,7 @@ def main():
     a = ap.parse_args()
 
     if not scraper:
-        print("Attention : skill website-scraper introuvable, pas de visite des sites.")
+        print("Attention : skill gw-website-scraper introuvable, pas de visite des sites.")
     boites = charger_atout(a) if a.atout_france else charger_csv(a)
     if a.limit:
         boites = boites[: a.limit]

@@ -5,8 +5,8 @@ boîtes, ensuite les bonnes personnes.
 
 | Skill | Ce qu'il fait |
 |---|---|
-| `website-scraper` | Visite le site de chaque boîte (accueil, contact, mentions légales) et ramène domaine, email, téléphone, LinkedIn de l'entreprise, SIREN |
-| `csv-outbound-builder` | Filtre le fichier Atout France des hébergements classés (ou votre propre liste), appelle le scraper, trouve le dirigeant via l'API Recherche d'entreprises (data.gouv) et sort un CSV prêt pour lemlist |
+| `gw-website-scraper` | Visite le site de chaque boîte (accueil, contact, mentions légales) et ramène domaine, email, téléphone, LinkedIn de l'entreprise, SIREN |
+| `gw-csv-outbound-builder` | Filtre le fichier Atout France des hébergements classés (ou votre propre liste), appelle le scraper, trouve le dirigeant via l'API Recherche d'entreprises (data.gouv) et sort un CSV prêt pour lemlist |
 
 Exemple réel (15/10/2026) : 25 hôtels de 1 à 4 étoiles du Jura et du Doubs, 15 secondes,
 dirigeant trouvé pour 16, email générique pour 11.
@@ -21,7 +21,7 @@ Avec Claude Code :
 ```bash
 git clone https://github.com/Lyr0n/growth-will-outbound.git
 mkdir -p ~/.claude/skills
-cp -R growth-will-outbound/website-scraper growth-will-outbound/csv-outbound-builder ~/.claude/skills/
+cp -R growth-will-outbound/gw-website-scraper growth-will-outbound/gw-csv-outbound-builder ~/.claude/skills/
 ```
 
 Puis demandez à Claude : « fais-moi un CSV de prospection des hôtels de 1 à 4 étoiles du Jura ».
@@ -29,7 +29,7 @@ Puis demandez à Claude : « fais-moi un CSV de prospection des hôtels de 1 à 
 Sans Claude, les scripts tournent seuls (Python 3.9+, aucune dépendance) :
 
 ```bash
-python3 csv-outbound-builder/builder.py hotels.csv --atout-france \
+python3 gw-csv-outbound-builder/builder.py hotels.csv --atout-france \
   --type "HÔTEL DE TOURISME" --etoiles 1,2,3,4 --dep 39,25 --limit 25
 ```
 
