@@ -115,11 +115,16 @@ def charger_csv(a):
 
 # 3. Le décideur --------------------------------------------------------------------------------
 
+def dirigeants_utiles(res):
+    """Les dirigeants, sans les commissaires aux comptes (ce sont des auditeurs, pas des décideurs)."""
+    return [d for d in res.get("dirigeants", []) if "commissaire" not in sans_accents(d.get("qualite", ""))]
+
+
 def dirigeant_physique(res):
-    for d in res.get("dirigeants", []):
+    for d in dirigeants_utiles(res):
         if d.get("type_dirigeant") == "personne physique" and any(k in sans_accents(d.get("qualite", "")) for k in map(sans_accents, ROLES)):
             return d
-    for d in res.get("dirigeants", []):
+    for d in dirigeants_utiles(res):
         if d.get("type_dirigeant") == "personne physique":
             return d
     return None
@@ -163,7 +168,7 @@ def enrichir(b):
                       "effectif": ent.get("tranche_effectif_salarie") or ""})
         d = dirigeant_physique(ent)
         if not d:
-            morale = next((x for x in ent.get("dirigeants", []) if x.get("type_dirigeant") == "personne morale"), None)
+            morale = next((x for x in dirigeants_utiles(ent) if x.get("type_dirigeant") == "personne morale"), None)
             if morale:
                 ligne["groupe"] = morale.get("denomination", "")
                 h = api({"q": morale.get("siren", ""), "per_page": 1}) if morale.get("siren") else []
