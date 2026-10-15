@@ -8,7 +8,7 @@ Tous préfixés `gw-`.
 | Skill | Ce qu'il fait | Gratuit jusqu'à |
 |---|---|---|
 | `gw-website-scraper` | Visite le site de chaque boîte (accueil, contact, mentions légales) et ramène domaine, email, téléphone, LinkedIn de l'entreprise, SIREN | l'email générique (`contact@`) |
-| `gw-csv-outbound-builder` | Filtre le fichier Atout France des hébergements classés (ou votre liste), appelle `gw-website-scraper`, trouve le dirigeant via l'API Recherche d'entreprises (data.gouv), sort un CSV prêt pour lemlist | le nom du dirigeant |
+| `gw-outbound-builder` | Filtre le fichier Atout France des hébergements classés (ou votre liste), appelle `gw-website-scraper`, trouve le dirigeant via l'API Recherche d'entreprises (data.gouv), sort un CSV prêt pour lemlist | le nom du dirigeant |
 
 Exemple réel (15/10/2026) : 25 hôtels de 1 à 4 étoiles du Jura et du Doubs, 15 secondes,
 dirigeant trouvé pour 16, email générique pour 11. Le LinkedIn et l'email perso du dirigeant ne
@@ -29,7 +29,7 @@ Puis demandez à Claude : « fais-moi un CSV de prospection des hôtels de 1 à 
 Sans Claude, les scripts tournent seuls (Python 3.9+, aucune dépendance) :
 
 ```bash
-python3 gw-csv-outbound-builder/builder.py hotels.csv --atout-france \
+python3 gw-outbound-builder/builder.py hotels.csv --atout-france \
   --type "HÔTEL DE TOURISME" --etoiles 1,2,3,4 --dep 39,25 --limit 25
 ```
 

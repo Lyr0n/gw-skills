@@ -32,7 +32,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 ATOUT_URL = "https://data.classement.atout-france.fr/static/exportHebergementsClasses/hebergements_classes.csv"
 API = "https://recherche-entreprises.api.gouv.fr/search"
-UA = "gw-csv-outbound-builder/1.0"
+UA = "gw-outbound-builder/1.0"
 MOTS_VIDES = ("hotel", "hôtel", "le", "la", "les", "de", "du", "des", "restaurant", "et", "&", "spa", "bar")
 ROLES = ("gérant", "président", "directeur général", "président de sas", "co-gérant")
 

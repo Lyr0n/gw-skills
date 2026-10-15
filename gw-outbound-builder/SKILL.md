@@ -1,5 +1,5 @@
 ---
-name: gw-csv-outbound-builder
+name: gw-outbound-builder
 description: "Construit un fichier de prospection prêt à importer (lemlist, Clay, tableur) depuis le fichier Atout France des hébergements classés ou n'importe quelle liste de boîtes : companyName, companyDomain, email, téléphone, LinkedIn de l'entreprise, SIREN, décideur (prénom, nom, fonction) via data.gouv, chaîne ou groupe. Gratuit. Déclencheurs : « fais-moi un CSV de prospection », « liste d'hôtels / campings à prospecter », « Atout France », « CSV outbound », « prépare le fichier lemlist »."
 ---
 
@@ -23,11 +23,11 @@ Afficher les filtres et les faire valider : type, étoiles, départements, taill
 
 ```bash
 # Atout France
-python3 ~/.claude/skills/gw-csv-outbound-builder/builder.py sortie.csv --atout-france \
+python3 ~/.claude/skills/gw-outbound-builder/builder.py sortie.csv --atout-france \
   --type "HÔTEL DE TOURISME" --etoiles 1,2,3,4 --dep 39,25 --limit 25
 
 # Une liste déjà prête
-python3 ~/.claude/skills/gw-csv-outbound-builder/builder.py sortie.csv --entree liste.csv \
+python3 ~/.claude/skills/gw-outbound-builder/builder.py sortie.csv --entree liste.csv \
   --col-nom nom --col-cp code_postal --col-site site
 ```
 
