@@ -19,9 +19,9 @@ pas plus loin.
 Avec Claude Code :
 
 ```bash
-git clone https://github.com/Lyr0n/growthwill-skills.git
+git clone https://github.com/Lyr0n/growth-will-outbound.git
 mkdir -p ~/.claude/skills
-cp -R growthwill-skills/website-scraper growthwill-skills/csv-outbound-builder ~/.claude/skills/
+cp -R growth-will-outbound/website-scraper growth-will-outbound/csv-outbound-builder ~/.claude/skills/
 ```
 
 Puis demandez à Claude : « fais-moi un CSV de prospection des hôtels de 1 à 4 étoiles du Jura ».
