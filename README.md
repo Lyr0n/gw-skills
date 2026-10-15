@@ -19,9 +19,9 @@ se trouvent pas gratuitement.
 Avec Claude Code :
 
 ```bash
-git clone https://github.com/Lyr0n/growth-will-outbound.git
+git clone https://github.com/Lyr0n/gw-skills.git
 mkdir -p ~/.claude/skills
-cp -R growth-will-outbound/gw-* ~/.claude/skills/
+cp -R gw-skills/gw-* ~/.claude/skills/
 ```
 
 Puis demandez à Claude : « fais-moi un CSV de prospection des hôtels de 1 à 4 étoiles du Jura ».
